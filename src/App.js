@@ -20,7 +20,7 @@ function App() {
     e.preventDefault();
     if (searchCity) {
       setLoading(true);
-      axios.get(`https://api.weatherapi.com/v1/forecast.json?key=process.env.API_KEY&q=searchCity&days=3&aqi=no&alerts=no`)
+      axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${searchCity}&days=3&aqi=no&alerts=no`)
         .then(response => {
           setError("");
           setResults(response.data);
