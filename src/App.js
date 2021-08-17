@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import ThemeSwitch  from "./ThemeSwitch";
 import './App.css';
 import axios from "axios";
-require('dotenv').config();
 
 function App() {
   const { mode } = useContext(ThemeContext);
@@ -20,7 +19,7 @@ function App() {
     e.preventDefault();
     if (searchCity) {
       setLoading(true);
-      axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${searchCity}&days=3&aqi=no&alerts=no`)
+      axios.get(`https://api.weatherapi.com/v1/forecast.json?key=f60b0e7e7f324f6ab85183917211308&q=${searchCity}&days=3&aqi=no&alerts=no`)
         .then(response => {
           setError("");
           setResults(response.data);
