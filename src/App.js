@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import ThemeSwitch  from "./ThemeSwitch";
 import './App.css';
 import axios from "axios";
+require('dotenv').config();
 
 function App() {
   const { mode } = useContext(ThemeContext);
