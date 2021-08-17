@@ -18,7 +18,6 @@ function App() {
 
   const fetchResults = async (e) => {
     e.preventDefault();
-    console.log(process.env);
     if (searchCity) {
       setLoading(true);
       axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${env.API_KEY}&q=${searchCity}&days=3&aqi=no&alerts=no`)
