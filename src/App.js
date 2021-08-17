@@ -18,8 +18,8 @@ function App() {
 
   const fetchResults = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (searchCity) {
-      setLoading(true);
       axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${env.API_KEY}&q=${searchCity}&days=3&aqi=no&alerts=no`)
         .then(response => {
           setError("");
@@ -27,12 +27,14 @@ function App() {
           setLoading(false);
         })
         .catch(err => {
-          console.log(err.response);
           setLoading(false);
+          setResults("");
           setError(err.response.data.error.message);
         });
     } else {
-      alert("Enter city please");
+      setLoading(false);
+      setResults("");
+      setError("Please enter city.");
     }
   }
 
@@ -47,7 +49,7 @@ function App() {
         <input type="text" placeholder="Enter your city" id="city" value={searchCity} onChange={e => setSearchCity(e.target.value)} className={'city city-'+themes[mode].name} />
         <button id="fetchCity" className={'btn btn-'+themes[mode].name} type="submit" onClick={fetchResults}>Submit</button>
       </form>
-      { error !== "" && <div>{ error }</div> }
+      { error !== "" && <div className="error-text">{ error }</div> }
       { loading && <div>Loading...</div> }
       { results !== "" && !loading && !error && 
         <CurrentWeather results={results} />
