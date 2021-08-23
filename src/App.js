@@ -40,11 +40,13 @@ function App() {
 
   return (
     <div className="container">
-      <ThemeSwitch />
       <Helmet>
         <style>{'body { background-color:'+themes[mode].backgroundColor+'; color: '+themes[mode].color+';}'}</style>
       </Helmet>
-      <h1>React Weather App</h1>
+      <header>
+        <h1>React Weather App</h1>
+        <ThemeSwitch />
+      </header>
       <form onSubmit={fetchResults}>
         <input type="text" placeholder="Enter your city" id="city" value={searchCity} onChange={e => setSearchCity(e.target.value)} className={'city city-'+themes[mode].name} />
         <button id="fetchCity" className={'btn btn-'+themes[mode].name} type="submit" onClick={fetchResults}>Submit</button>
